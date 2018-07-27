@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //On Linux you can :
 
+    /*
     int returnedCode = QProcess::execute("ping", QStringList() << "-c 1" << ui->ipEdit->text());
     if (returnedCode == 0)
     {
@@ -46,9 +47,26 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         //  It's dead, Show Red Check
     }
+   */
+
+    connect(ui->btCheck, SIGNAL(clicked()), this, SLOT(checkIP()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::checkIP()
+{
+    int returnedCode = QProcess::execute("ping", QStringList() << "-c 1" << ui->tbIP->text());
+    if (returnedCode == 0)
+    {
+        // It's active, Show Green Check
+        ui->lbStatus->setText("Active");
+    } else
+    {
+        //  It's dead, Show Red Check
+        ui->lbStatus->setText("Not Active");
+    }
 }

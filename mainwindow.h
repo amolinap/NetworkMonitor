@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QNetworkInterface>
 #include <QHostAddress>
+#include <QProcess>
 #include <QDebug>
 
 namespace Ui {
@@ -20,6 +21,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void checkIP();
 };
 
 #endif // MAINWINDOW_H
