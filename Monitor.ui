@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Network Monitor</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -47,13 +47,13 @@
        <item>
         <widget class="QWidget" name="lwHosts" native="true">
          <property name="toolTip">
-          <string>Lista de WayPoints</string>
+          <string>Lista de Host's</string>
          </property>
          <property name="statusTip">
-          <string>Lista de WayPoints</string>
+          <string>Lista de Host's</string>
          </property>
          <property name="whatsThis">
-          <string>Lista de WayPoints</string>
+          <string>Lista de Host's</string>
          </property>
         </widget>
        </item>
@@ -63,6 +63,13 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="btAdd">
+       <property name="text">
+        <string>Agregar Host</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -77,9 +84,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btAdd">
+      <widget class="QPushButton" name="btClose">
        <property name="text">
-        <string>Agregar</string>
+        <string>Cerrar</string>
        </property>
       </widget>
      </item>

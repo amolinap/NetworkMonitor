@@ -14,6 +14,8 @@ HostIP::HostIP(QWidget *parent) :
 
     //procc = new QProcess(this);
     //procc.setProcessChannelMode(QProcess::MergedChannels);
+    ui->lbStatus->setText("No Activo");
+    ui->lbStatus->setStyleSheet("background-color:red;");
 }
 
 HostIP::~HostIP()
