@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTimer>
 #include <QProcess>
+#include <QDateTime>
 
 namespace Ui {
 class HostIP;

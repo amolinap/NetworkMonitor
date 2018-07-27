@@ -49,6 +49,7 @@ void HostIP::CheckHostIP()
 
     if (returnedCode == 0)
     {
+        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("hh:mm:ss"));
         ui->lbStatus->setText("Activo");
         ui->lbStatus->setStyleSheet("background-color:green;");
     }
