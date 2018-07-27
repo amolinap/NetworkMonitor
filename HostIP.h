@@ -20,6 +20,7 @@ public:
 private:
     Ui::HostIP *ui;
     QTimer *timer;
+    //QProcess procc;
 
 private slots:
     void CheckHostIP();
