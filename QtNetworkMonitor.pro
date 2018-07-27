@@ -8,9 +8,14 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QtNetworkMonitor
+TARGET = NetworkMonitor
 TEMPLATE = app
-
+BASEDIR = $$PWD
+TARGETDIR = $$OUT_PWD
+BUILDDIR = $$TARGETDIR/build
+OBJECTS_DIR = $$BUILDDIR/obj
+MOC_DIR = $$BUILDDIR/moc
+UI_DIR = $$BUILDDIR/generated
 
 SOURCES += main.cpp\
         mainwindow.cpp \
