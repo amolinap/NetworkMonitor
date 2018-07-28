@@ -20,6 +20,8 @@ public:
 
     QString getIP();
     QString getName();
+    void setIP(QString ip);
+    void setName(QString name);
 
 private:
     Ui::HostIP *ui;

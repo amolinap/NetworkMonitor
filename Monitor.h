@@ -36,6 +36,7 @@ private:
 private slots:
     void addHost();
     void saveHosts();
+    void openHosts();
 };
 
 #endif // MONITOR_H

@@ -17,6 +17,8 @@ Monitor::Monitor(QWidget *parent) :
     connect(ui->btClose, SIGNAL(clicked()), this, SLOT(close()));
 
     setWindowTitle(tr("%1 %2").arg(APP_NAME).arg(APP_VERSION));
+
+    openHosts();
 }
 
 Monitor::~Monitor()
@@ -28,7 +30,7 @@ void Monitor::addHost()
 {
     HostIP* host = new HostIP();
 
-    listLayout->insertWidget(0, host);
+    listLayout->insertWidget(listLayout->count(), host);
 }
 
 void Monitor::closeEvent(QCloseEvent *event)
@@ -49,41 +51,83 @@ void Monitor::closeEvent(QCloseEvent *event)
 
 void Monitor::saveHosts()
 {
-    qDebug()<<"QCloseEvent";
+    if(listLayout->count() > 0)
+    {
+        qDebug()<<"QCloseEvent";
 
+        QDomDocument xmlHosts;
+        QDomElement hosts = xmlHosts.createElement("hosts");
+        xmlHosts.appendChild(hosts);
+
+        for(int i=0; i<listLayout->count();i++)
+        {
+            HostIP* host = (HostIP*)listLayout->itemAt(i)->widget();
+
+            qDebug()<<host->getIP()<<" "<<host->getName();
+
+            QDomElement hostXML = xmlHosts.createElement("host");
+
+            QDomElement ipXML = xmlHosts.createElement("ip");
+            ipXML.appendChild(xmlHosts.createTextNode(host->getIP()));
+
+            QDomElement nameXML = xmlHosts.createElement("nombre");
+            nameXML.appendChild(xmlHosts.createTextNode(host->getName()));
+
+            hosts.appendChild(hostXML);
+            hostXML.appendChild(ipXML);
+            hostXML.appendChild(nameXML);
+        }
+
+        QFile file2( "../../../networkmonitor_hosts.xml" );
+
+        if( !file2.open( QIODevice::WriteOnly | QIODevice::Text ) )
+        {
+            qDebug( "Failed to open file for writing." );
+
+        }
+
+        QTextStream stream2( &file2 );
+        stream2 << xmlHosts.toString();
+
+        file2.close();
+    }
+}
+
+void Monitor::openHosts()
+{
     QDomDocument xmlHosts;
-    QDomElement hosts = xmlHosts.createElement("hosts");
-    xmlHosts.appendChild(hosts);
 
-    for(int i=0; i<listLayout->count();i++)
+    QFile file("../../../networkmonitor_hosts.xml");
+
+    if(!file.open(QIODevice::ReadOnly))
     {
-        HostIP* host = (HostIP*)listLayout->itemAt(i)->widget();
+        qDebug("Error al abrir archivo");
+    }
+    else
+    {
+        if(!xmlHosts.setContent(&file))
+        {
+            qDebug("Error al cargar archivo");
+        }
 
-        qDebug()<<host->getIP()<<" "<<host->getName();
-
-        QDomElement hostXML = xmlHosts.createElement("host");
-
-        QDomElement ipXML = xmlHosts.createElement("ip");
-        ipXML.appendChild(xmlHosts.createTextNode(host->getIP()));
-
-        QDomElement nameXML = xmlHosts.createElement("nombre");
-        nameXML.appendChild(xmlHosts.createTextNode(host->getName()));
-
-        hosts.appendChild(hostXML);
-        hostXML.appendChild(ipXML);
-        hostXML.appendChild(nameXML);
+        file.close();
     }
 
-    QFile file2( "../../../networkmonitor_hosts.xml" );
+    QDomElement root = xmlHosts.firstChildElement();
 
-    if( !file2.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    QDomNodeList hosts = root.elementsByTagName("host");
+
+    for(int i=0; i<hosts.count(); i++)
     {
-        qDebug( "Failed to open file for writing." );
+        QDomNodeList values = hosts.at(i).childNodes();
 
+        qDebug()<<"IP "<<values.item(0).toElement().childNodes().at(0).nodeValue();
+        qDebug()<<"Nombre "<<values.item(1).toElement().childNodes().at(0).nodeValue();
+
+        HostIP* hostView = new HostIP(this);
+        hostView->setIP(values.item(0).toElement().childNodes().at(0).nodeValue());
+        hostView->setName(values.item(1).toElement().childNodes().at(0).nodeValue());
+
+        listLayout->insertWidget(i, hostView);
     }
-
-    QTextStream stream2( &file2 );
-    stream2 << xmlHosts.toString();
-
-    file2.close();
 }

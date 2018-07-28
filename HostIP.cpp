@@ -89,3 +89,13 @@ QString HostIP::getName()
 {
     return ui->tbName->text();
 }
+
+void HostIP::setIP(QString ip)
+{
+    ui->tbIP->setText(ip);
+}
+
+void HostIP::setName(QString name)
+{
+    ui->tbName->setText(name);
+}
