@@ -1,0 +1,10 @@
+Network Monitor
+
+Proyecto en Qt para verificar el estado de comunicaciones con dispositivos en la Red usando el comando Ping.
+
+Plataformas
++ macOS Sierra
+
+Versiones usadas
++ Qt Creator 3.2.1 (opensource)
++ Based on Qt 5.3.2 (Clang 5.0 (Apple), 64 bit)
