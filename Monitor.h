@@ -5,6 +5,9 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QCloseEvent>
+#include <QDebug>
+#include <QDomDocument>
+#include <QDomElement>
 
 #include "HostIP.h"
 
@@ -32,6 +35,7 @@ private:
 
 private slots:
     void addHost();
+    void saveHosts();
 };
 
 #endif // MONITOR_H

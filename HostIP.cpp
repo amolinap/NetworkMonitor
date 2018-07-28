@@ -79,3 +79,13 @@ void HostIP::enabledHost(bool enabled)
         timer->stop();
     }
 }
+
+QString HostIP::getIP()
+{
+    return ui->tbIP->text();
+}
+
+QString HostIP::getName()
+{
+    return ui->tbName->text();
+}

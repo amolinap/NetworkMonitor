@@ -18,6 +18,9 @@ public:
     explicit HostIP(QWidget *parent = 0);
     ~HostIP();
 
+    QString getIP();
+    QString getName();
+
 private:
     Ui::HostIP *ui;
     QTimer *timer;
