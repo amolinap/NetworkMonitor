@@ -15,7 +15,7 @@ HostIP::HostIP(QWidget *parent) :
     //procc = new QProcess(this);
     //procc.setProcessChannelMode(QProcess::MergedChannels);
     ui->lbStatus->setText("No Activo");
-    ui->lbStatus->setStyleSheet("background-color:red;");
+    ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
 }
 
 HostIP::~HostIP()
@@ -51,14 +51,14 @@ void HostIP::CheckHostIP()
 
     if (returnedCode == 0)
     {
-        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("hh:mm:ss"));
+        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy \n hh:mm:ss"));
         ui->lbStatus->setText("Activo");
-        ui->lbStatus->setStyleSheet("background-color:green;");
+        ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
     }
     else
     {
         ui->lbStatus->setText("No Activo");
-        ui->lbStatus->setStyleSheet("background-color:red;");
+        ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
     }
 }
 
@@ -67,12 +67,14 @@ void HostIP::enabledHost(bool enabled)
     if(enabled)
     {
         ui->tbIP->setEnabled(false);
+        ui->tbName->setEnabled(false);
 
         timer->start();
     }
     else
     {
         ui->tbIP->setEnabled(true);
+        ui->tbName->setEnabled(true);
 
         timer->stop();
     }

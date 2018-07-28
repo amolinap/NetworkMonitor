@@ -6,12 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>343</height>
+    <width>659</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Network Monitor</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#lwHosts 
+{
+    background-color: #000000;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,8 +30,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>549</width>
-        <height>275</height>
+        <width>633</width>
+        <height>350</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
