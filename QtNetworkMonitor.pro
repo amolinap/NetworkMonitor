@@ -22,11 +22,13 @@ INCLUDEPATH += src/
 SOURCES += main.cpp\
     src/mainwindow.cpp \
     src/Monitor.cpp \
-    src/HostIP.cpp
+    src/HostIP.cpp \
+    src/Ping.cpp
 
 HEADERS  += src/mainwindow.h \
     src/Monitor.h \
-    src/HostIP.h
+    src/HostIP.h \
+    src/Ping.h
 
 FORMS    += src/mainwindow.ui \
     src/Monitor.ui \

@@ -6,6 +6,8 @@
 #include <QProcess>
 #include <QDateTime>
 
+#include "Ping.h"
+
 namespace Ui {
 class HostIP;
 }
@@ -26,11 +28,12 @@ public:
 private:
     Ui::HostIP *ui;
     QTimer *timer;
-    //QProcess procc;
+    Ping* ping;
 
 private slots:
     void CheckHostIP();
     void enabledHost(bool enabled);
+    void pingIsOk(bool value);
 };
 
 #endif // HOSTIP_H

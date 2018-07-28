@@ -16,6 +16,9 @@ HostIP::HostIP(QWidget *parent) :
     //procc.setProcessChannelMode(QProcess::MergedChannels);
     ui->lbStatus->setText("No Activo");
     ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
+
+    ping = new Ping();
+    connect(ping, SIGNAL(emitStatus(bool)), this, SLOT(pingIsOk(bool)));
 }
 
 HostIP::~HostIP()
@@ -69,14 +72,32 @@ void HostIP::enabledHost(bool enabled)
         ui->tbIP->setEnabled(false);
         ui->tbName->setEnabled(false);
 
-        timer->start();
+        //timer->start();
+        ping->setIP(ui->tbIP->text());
+        ping->start();
     }
     else
     {
         ui->tbIP->setEnabled(true);
         ui->tbName->setEnabled(true);
 
-        timer->stop();
+        //timer->stop();
+        ping->terminate();
+    }
+}
+
+void HostIP::pingIsOk(bool value)
+{
+    if (value)
+    {
+        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy \n hh:mm:ss"));
+        ui->lbStatus->setText("Activo");
+        ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
+    }
+    else
+    {
+        ui->lbStatus->setText("No Activo");
+        ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
     }
 }
 
@@ -98,4 +119,5 @@ void HostIP::setIP(QString ip)
 void HostIP::setName(QString name)
 {
     ui->tbName->setText(name);
+    ping->setName(ui->tbName->text());
 }
