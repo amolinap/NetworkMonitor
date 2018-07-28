@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QDir>
 
 #include "HostIP.h"
 

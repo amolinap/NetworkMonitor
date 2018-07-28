@@ -82,7 +82,8 @@ void Monitor::saveHosts()
             hostXML.appendChild(checkXML);
         }
 
-        QFile file2( "../../../networkmonitor_hosts.xml" );
+
+        QFile file2(QCoreApplication::applicationDirPath()+ "/../../../networkmonitor_hosts.xml" );
 
         if( !file2.open( QIODevice::WriteOnly | QIODevice::Text ) )
         {
@@ -101,7 +102,7 @@ void Monitor::openHosts()
 {
     QDomDocument xmlHosts;
 
-    QFile file("../../../networkmonitor_hosts.xml");
+    QFile file(QCoreApplication::applicationDirPath()+"/../../../networkmonitor_hosts.xml");
 
     if(!file.open(QIODevice::ReadOnly))
     {
