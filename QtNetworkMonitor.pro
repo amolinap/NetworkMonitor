@@ -17,15 +17,17 @@ OBJECTS_DIR = $$BUILDDIR/obj
 MOC_DIR = $$BUILDDIR/moc
 UI_DIR = $$BUILDDIR/generated
 
+INCLUDEPATH += src/
+
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    Monitor.cpp \
-    HostIP.cpp
+    src/mainwindow.cpp \
+    src/Monitor.cpp \
+    src/HostIP.cpp
 
-HEADERS  += mainwindow.h \
-    Monitor.h \
-    HostIP.h
+HEADERS  += src/mainwindow.h \
+    src/Monitor.h \
+    src/HostIP.h
 
-FORMS    += mainwindow.ui \
-    Monitor.ui \
-    HostIP.ui
+FORMS    += src/mainwindow.ui \
+    src/Monitor.ui \
+    src/HostIP.ui
