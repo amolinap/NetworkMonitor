@@ -27,11 +27,9 @@ public:
 
 private:
     Ui::HostIP *ui;
-    QTimer *timer;
     Ping* ping;
 
 private slots:
-    void CheckHostIP();
     void enabledHost(bool enabled);
     void pingIsOk(bool value);
 };

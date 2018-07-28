@@ -7,13 +7,8 @@ HostIP::HostIP(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    timer = new QTimer(this);
-    timer->setInterval(5000);
-    connect(timer, SIGNAL(timeout()), this, SLOT(CheckHostIP()));
     connect(ui->cxEnabled, SIGNAL(clicked(bool)), this, SLOT(enabledHost(bool)));
 
-    //procc = new QProcess(this);
-    //procc.setProcessChannelMode(QProcess::MergedChannels);
     ui->lbStatus->setText("No Activo");
     ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
 
@@ -26,45 +21,6 @@ HostIP::~HostIP()
     delete ui;
 }
 
-void HostIP::CheckHostIP()
-{
-    /*procc.execute("ping", QStringList() << "-c 1" << ui->tbIP->text());
-    procc.waitForFinished(-1);
-
-    int returnedCode  = procc.exitCode();
-
-    if (returnedCode == 0)
-    {
-        ui->lbStatus->setText("Activo");
-        ui->lbStatus->setStyleSheet("background-color:green;");
-    } else
-    {
-        ui->lbStatus->setText("No Activo");
-        ui->lbStatus->setStyleSheet("background-color:red;");
-    }*/
-
-    //int returnedCode = QProcess::execute("ping", QStringList() << "-c 1" << ui->tbIP->text());
-
-    QString nParameter = "-c";
-        QString pingCount = "1"; //(int)
-        QString wParameter = "-W";
-        QString pingWaitTime = "10"; //(ms)
-        QProcess* pingProcess = new QProcess;
-        int returnedCode = pingProcess->execute("ping",QStringList() << ui->tbIP->text()<<nParameter<<pingCount<<wParameter<<pingWaitTime);
-
-    if (returnedCode == 0)
-    {
-        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy \n hh:mm:ss"));
-        ui->lbStatus->setText("Activo");
-        ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
-    }
-    else
-    {
-        ui->lbStatus->setText("No Activo");
-        ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
-    }
-}
-
 void HostIP::enabledHost(bool enabled)
 {
     if(enabled)
@@ -72,7 +28,6 @@ void HostIP::enabledHost(bool enabled)
         ui->tbIP->setEnabled(false);
         ui->tbName->setEnabled(false);
 
-        //timer->start();
         ping->setIP(ui->tbIP->text());
         ping->start();
     }
@@ -81,7 +36,6 @@ void HostIP::enabledHost(bool enabled)
         ui->tbIP->setEnabled(true);
         ui->tbName->setEnabled(true);
 
-        //timer->stop();
         ping->terminate();
     }
 }
@@ -119,5 +73,4 @@ void HostIP::setIP(QString ip)
 void HostIP::setName(QString name)
 {
     ui->tbName->setText(name);
-    ping->setName(ui->tbName->text());
 }

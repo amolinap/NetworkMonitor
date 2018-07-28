@@ -14,13 +14,15 @@ public:
     ~Ping();
 
     void setIP(QString value);
-    void setName(QString value);
     QString getIP();
-    QString getName();
 
 private:
     QString ip;
-    QString name;
+    QProcess* pingProcess;
+    QString nParameter;
+    QString pingCount;
+    QString wParameter;
+    QString pingWaitTime;
 
 protected slots:
     void run();
