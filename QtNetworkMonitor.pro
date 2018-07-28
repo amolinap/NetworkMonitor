@@ -33,3 +33,13 @@ HEADERS  += src/mainwindow.h \
 FORMS    += src/mainwindow.ui \
     src/Monitor.ui \
     src/HostIP.ui
+
+macx {
+    ICON = icon.icns
+    message("compilando para mac...")
+}
+
+win32 {
+    win32:RC_ICONS += $$BASEDIR/spartaam.ico
+    message("compilando para windows...")
+}
