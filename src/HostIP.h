@@ -22,8 +22,10 @@ public:
 
     QString getIP();
     QString getName();
+    int getCheck();
     void setIP(QString ip);
     void setName(QString name);
+    void setCheck(int value);
 
 private:
     Ui::HostIP *ui;

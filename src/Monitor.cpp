@@ -73,9 +73,13 @@ void Monitor::saveHosts()
             QDomElement nameXML = xmlHosts.createElement("nombre");
             nameXML.appendChild(xmlHosts.createTextNode(host->getName()));
 
+            QDomElement checkXML = xmlHosts.createElement("check");
+            checkXML.appendChild(xmlHosts.createTextNode(QString::number(host->getCheck())));
+
             hosts.appendChild(hostXML);
             hostXML.appendChild(ipXML);
             hostXML.appendChild(nameXML);
+            hostXML.appendChild(checkXML);
         }
 
         QFile file2( "../../../networkmonitor_hosts.xml" );
@@ -127,6 +131,7 @@ void Monitor::openHosts()
         HostIP* hostView = new HostIP(this);
         hostView->setIP(values.item(0).toElement().childNodes().at(0).nodeValue());
         hostView->setName(values.item(1).toElement().childNodes().at(0).nodeValue());
+        hostView->setCheck(values.item(2).toElement().childNodes().at(0).nodeValue().toInt());
 
         listLayout->insertWidget(i, hostView);
     }

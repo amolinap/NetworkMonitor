@@ -65,6 +65,11 @@ QString HostIP::getName()
     return ui->tbName->text();
 }
 
+int HostIP::getCheck()
+{
+    return ui->cxEnabled->isChecked() ? 1 : 0;
+}
+
 void HostIP::setIP(QString ip)
 {
     ui->tbIP->setText(ip);
@@ -73,4 +78,13 @@ void HostIP::setIP(QString ip)
 void HostIP::setName(QString name)
 {
     ui->tbName->setText(name);
+}
+
+void HostIP::setCheck(int value)
+{
+    if(value == 1)
+    {
+        ui->cxEnabled->setChecked(true);
+        enabledHost(true);
+    }
 }

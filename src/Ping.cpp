@@ -20,9 +20,11 @@ void Ping::run()
 {
     forever
     {
+        QThread::msleep(5000);
+
         checkHostIP();
 
-        QThread::msleep(10000);
+        QThread::msleep(5000);
     }
 }
 
