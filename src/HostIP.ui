@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1353</width>
-    <height>43</height>
+    <width>897</width>
+    <height>56</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,10 +24,10 @@ QLabel
 	color: #FFFFFF;
 }
 
-QLabel#lbLastRequest
+QLabel#lbLastRequest,#lbLastError
 {
 	color: #FFFFFF;
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: normal;
 }
 
@@ -78,7 +78,7 @@ QCheckBox::indicator:checked:pressed
     background-color: #FFBF00;
 }s</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="leftMargin">
     <number>2</number>
    </property>
@@ -96,7 +96,7 @@ QCheckBox::indicator:checked:pressed
      <property name="title">
       <string/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
        <number>2</number>
       </property>
@@ -110,110 +110,116 @@ QCheckBox::indicator:checked:pressed
        <number>2</number>
       </property>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QCheckBox" name="cxEnabled">
-          <property name="toolTip">
-           <string>Check para activar!!!</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>IP:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="tbIP">
-          <property name="minimumSize">
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>127.0.0.1</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Nombre:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="tbName">
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Servidor 1</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lbStatus">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>No Activo</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
+       <widget class="QCheckBox" name="cxEnabled">
+        <property name="toolTip">
+         <string>Check para activar!!!</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>IP:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tbIP">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>127.0.0.1</string>
+        </property>
+        <property name="maxLength">
+         <number>15</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Nombre:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tbName">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Servidor 1</string>
+        </property>
+        <property name="maxLength">
+         <number>20</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbStatus">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>No Activo</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>168</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLabel" name="lbLastRequest">
           <property name="minimumSize">
@@ -239,7 +245,39 @@ QCheckBox::indicator:checked:pressed
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QLabel" name="lbLastError">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Última comunicación NO exitosa!!!</string>
+          </property>
+          <property name="text">
+           <string>00:00:00</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btRemove">
+        <property name="text">
+         <string>Quitar</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

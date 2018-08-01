@@ -44,12 +44,13 @@ void HostIP::pingIsOk(bool value)
 {
     if (value)
     {
-        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy \n hh:mm:ss"));
+        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss"));
         ui->lbStatus->setText("Activo");
         ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
     }
     else
     {
+        ui->lbLastError->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss"));
         ui->lbStatus->setText("No Activo");
         ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
     }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>418</height>
+    <width>600</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,11 +30,11 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>633</width>
-        <height>350</height>
+        <width>574</width>
+        <height>272</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -60,6 +60,25 @@
          </property>
          <property name="whatsThis">
           <string>Lista de Host's</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>15</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #40FF00;
+font-size: 12px;
+font-weight: normal;
+background-color: #000000;</string>
+         </property>
+         <property name="text">
+          <string>[***Se realiza un ping cada 10 segundos***]</string>
          </property>
         </widget>
        </item>
