@@ -34,11 +34,11 @@ void Ping::checkHostIP()
 
     if (returnedCode == 0)
     {
-        emit emitStatus(true);
+        emit emitStatus(true, ip);
     }
     else
     {
-        emit emitStatus(false);
+        emit emitStatus(false, ip);
     }
 }
 

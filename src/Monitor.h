@@ -33,11 +33,13 @@ public:
 private:
     Ui::Monitor *ui;
     QVBoxLayout *listLayout;
+    QString logName;
 
 private slots:
     void addHost();
     void saveHosts();
     void openHosts();
+    void saveLOG(QString message);
 };
 
 #endif // MONITOR_H

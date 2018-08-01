@@ -29,7 +29,7 @@ protected slots:
     void checkHostIP();
 
 signals:
-    void emitStatus(bool ping);
+    void emitStatus(bool ping, QString ip);
 };
 
 #endif // PING_H

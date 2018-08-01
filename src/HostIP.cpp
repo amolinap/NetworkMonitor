@@ -13,7 +13,7 @@ HostIP::HostIP(QWidget *parent) :
     ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
 
     ping = new Ping();
-    connect(ping, SIGNAL(emitStatus(bool)), this, SLOT(pingIsOk(bool)));
+    connect(ping, SIGNAL(emitStatus(bool,QString)), this, SLOT(pingIsOk(bool,QString)));
 }
 
 HostIP::~HostIP()
@@ -40,19 +40,25 @@ void HostIP::enabledHost(bool enabled)
     }
 }
 
-void HostIP::pingIsOk(bool value)
+void HostIP::pingIsOk(bool value, QString ip)
 {
+    QString time = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss");
+
     if (value)
     {
-        ui->lbLastRequest->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss"));
+        ui->lbLastRequest->setText(time);
         ui->lbStatus->setText("Activo");
         ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
+
+        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->tbName->text() + "] \t Ping Ok!!!");
     }
     else
     {
-        ui->lbLastError->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss"));
+        ui->lbLastError->setText(time);
         ui->lbStatus->setText("No Activo");
         ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
+
+        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->tbName->text() + "] \t Ping Error!!!");
     }
 }
 

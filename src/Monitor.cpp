@@ -18,6 +18,8 @@ Monitor::Monitor(QWidget *parent) :
 
     setWindowTitle(tr("%1 %2").arg(APP_NAME).arg(APP_VERSION));
 
+    logName = "LOG_" + QDate::currentDate().toString("yyyyMMdd") + QTime::currentTime().toString("HHmmss") + ".txt";
+
     openHosts();
 }
 
@@ -28,9 +30,11 @@ Monitor::~Monitor()
 
 void Monitor::addHost()
 {
-    HostIP* host = new HostIP();
+    HostIP* hostView = new HostIP();
 
-    listLayout->insertWidget(listLayout->count(), host);
+    connect(hostView, SIGNAL(emitLOGMessage(QString)), this, SLOT(saveLOG(QString)));
+
+    listLayout->insertWidget(listLayout->count(), hostView);
 }
 
 void Monitor::closeEvent(QCloseEvent *event)
@@ -130,10 +134,27 @@ void Monitor::openHosts()
         qDebug()<<"Nombre "<<values.item(1).toElement().childNodes().at(0).nodeValue();
 
         HostIP* hostView = new HostIP(this);
+
+        connect(hostView, SIGNAL(emitLOGMessage(QString)), this, SLOT(saveLOG(QString)));
+
         hostView->setIP(values.item(0).toElement().childNodes().at(0).nodeValue());
         hostView->setName(values.item(1).toElement().childNodes().at(0).nodeValue());
         hostView->setCheck(values.item(2).toElement().childNodes().at(0).nodeValue().toInt());
 
         listLayout->insertWidget(i, hostView);
     }
+}
+
+void Monitor::saveLOG(QString message)
+{
+    QFile logFile(QCoreApplication::applicationDirPath() + "/../../../" + logName);
+    logFile.open(QIODevice::WriteOnly | QIODevice::Append);
+
+    QTextStream logStream(&logFile);
+
+    logStream
+            <<message<< "\t"
+            << "\r\n";
+
+    logFile.close();
 }

@@ -33,7 +33,10 @@ private:
 
 private slots:
     void enabledHost(bool enabled);
-    void pingIsOk(bool value);
+    void pingIsOk(bool value, QString ip);
+
+signals:
+    void emitLOGMessage(QString message);
 };
 
 #endif // HOSTIP_H
