@@ -13,7 +13,7 @@
 #include "HostIP.h"
 
 #define APP_NAME "Network Monitor"
-#define APP_VERSION "1.0"
+#define APP_VERSION "1.1"
 #define APP_BUILT_ON "JULIO 2018"
 
 namespace Ui {
@@ -33,13 +33,15 @@ public:
 private:
     Ui::Monitor *ui;
     QVBoxLayout *listLayout;
+    QMap<int, HostIP*> hostViews;
     QString logName;
 
-private slots:
+protected slots:
     void addHost();
     void saveHosts();
     void openHosts();
     void saveLOG(QString message);
+    void removeHost(HostIP* host);
 };
 
 #endif // MONITOR_H

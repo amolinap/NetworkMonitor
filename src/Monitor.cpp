@@ -30,9 +30,10 @@ Monitor::~Monitor()
 
 void Monitor::addHost()
 {
-    HostIP* hostView = new HostIP();
+    HostIP* hostView = new HostIP(this);
 
     connect(hostView, SIGNAL(emitLOGMessage(QString)), this, SLOT(saveLOG(QString)));
+    connect(hostView, SIGNAL(emitHost(HostIP*)), this, SLOT(removeHost(HostIP*)));
 
     listLayout->insertWidget(listLayout->count(), hostView);
 }
@@ -136,6 +137,7 @@ void Monitor::openHosts()
         HostIP* hostView = new HostIP(this);
 
         connect(hostView, SIGNAL(emitLOGMessage(QString)), this, SLOT(saveLOG(QString)));
+        connect(hostView, SIGNAL(emitHost(HostIP*)), this, SLOT(removeHost(HostIP*)));
 
         hostView->setIP(values.item(0).toElement().childNodes().at(0).nodeValue());
         hostView->setName(values.item(1).toElement().childNodes().at(0).nodeValue());
@@ -157,4 +159,18 @@ void Monitor::saveLOG(QString message)
             << "\r\n";
 
     logFile.close();
+}
+
+void Monitor::removeHost(HostIP* host)
+{
+    QMessageBox::StandardButton resBtn = QMessageBox::question( this, APP_NAME, tr("Desea quitar de la lista:\n%1\n%2").arg(host->getIP()).arg(host->getName()), QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
+
+    if (resBtn == QMessageBox::Yes)
+    {
+        qDebug()<<host->getIP();
+        host->hide();
+        listLayout->removeWidget(host);
+        listLayout->update();
+        qDebug()<<listLayout->count();
+    }
 }

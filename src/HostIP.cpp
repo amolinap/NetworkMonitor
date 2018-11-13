@@ -14,6 +14,7 @@ HostIP::HostIP(QWidget *parent) :
 
     ping = new Ping();
     connect(ping, SIGNAL(emitStatus(bool,QString)), this, SLOT(pingIsOk(bool,QString)));
+    connect(ui->btRemove, SIGNAL(clicked()), this, SLOT(removeHost()));
 }
 
 HostIP::~HostIP()
@@ -94,4 +95,9 @@ void HostIP::setCheck(int value)
         ui->cxEnabled->setChecked(true);
         enabledHost(true);
     }
+}
+
+void HostIP::removeHost()
+{
+    emit emitHost(this);
 }
