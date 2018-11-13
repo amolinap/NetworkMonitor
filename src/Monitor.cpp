@@ -18,6 +18,13 @@ Monitor::Monitor(QWidget *parent) :
 
     setWindowTitle(tr("%1 %2").arg(APP_NAME).arg(APP_VERSION));
 
+    QDir directory;
+
+    if(!directory.exists(QCoreApplication::applicationDirPath()+"/../../../LOGS"))
+    {
+        directory.mkdir(QCoreApplication::applicationDirPath()+"/../../../LOGS");
+    }
+
     logName = "LOG_" + QDate::currentDate().toString("yyyyMMdd") + QTime::currentTime().toString("HHmmss") + ".txt";
 
     openHosts();
@@ -149,7 +156,7 @@ void Monitor::openHosts()
 
 void Monitor::saveLOG(QString message)
 {
-    QFile logFile(QCoreApplication::applicationDirPath() + "/../../../" + logName);
+    QFile logFile(QCoreApplication::applicationDirPath() + "/../../../LOGS/" + logName);
     logFile.open(QIODevice::WriteOnly | QIODevice::Append);
 
     QTextStream logStream(&logFile);

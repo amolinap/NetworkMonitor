@@ -13,7 +13,7 @@
 #include "HostIP.h"
 
 #define APP_NAME "Network Monitor"
-#define APP_VERSION "1.1"
+#define APP_VERSION "1.2"
 #define APP_BUILT_ON "JULIO 2018"
 
 namespace Ui {
