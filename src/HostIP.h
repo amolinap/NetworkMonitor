@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QProcess>
 #include <QDateTime>
+#include <QFile>
 
 #include "Ping.h"
 
@@ -40,6 +41,7 @@ public:
     void setIP(QString ip);
     void setName(QString name);
     void setCheck(int value);
+    void loadStyleSheet(QString styleFileName);
 
 private:
     Ui::HostIP *ui;

@@ -28,7 +28,7 @@ public:
     explicit Monitor(QWidget *parent = 0);
     ~Monitor();
 
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event);    
 
 private:
     Ui::Monitor *ui;

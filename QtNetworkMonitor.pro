@@ -43,3 +43,6 @@ win32 {
     win32:RC_ICONS += $$BASEDIR/spartaam.ico
     message("compilando para windows...")
 }
+
+RESOURCES += \
+    resources.qrc

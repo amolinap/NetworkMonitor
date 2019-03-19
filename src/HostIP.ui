@@ -14,69 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#HostIP 
-{
-    background-color: #0B3861;
-}
-
-QLabel
-{
-	color: #FFFFFF;
-}
-
-QLabel#lbLastRequest,#lbLastError
-{
-	color: #FFFFFF;
-	font-size: 10px;
-	font-weight: normal;
-}
-
-QLabel#lbStatus
-{
-	color: #000000;
-	font-size: 12px;
-	font-weight: normal;
-}
-
-QWidget#gbHost 
-{
-     border: 2px solid #000000;
-	border-radius: 1px;
-    background-color: #0B3861;
-}
-
-QCheckBox 
-{
-	border: 0px;
-	color: #000000;
-	margin-top: 5px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-}
-
-QCheckBox::indicator 
-{
-	width: 20px;
-	height: 20px;
-    border: 2px solid #FFFF00;
-	border-radius: 5px;
-}
-
-QCheckBox::indicator:checked 
-{
-    background-color: #FFBF00;
-}
-
-QCheckBox::indicator:checked:hover 
-{
-    background-color: #FFBF00;
-}
-
-QCheckBox::indicator:checked:pressed 
-{
-    background-color: #FFBF00;
-}s</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="leftMargin">

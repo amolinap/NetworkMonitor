@@ -15,6 +15,8 @@ HostIP::HostIP(QWidget *parent) :
     ping = new Ping();
     connect(ping, SIGNAL(emitStatus(bool,QString)), this, SLOT(pingIsOk(bool,QString)));
     connect(ui->btRemove, SIGNAL(clicked()), this, SLOT(removeHost()));
+
+    loadStyleSheet(":/Images/stylesheet.css");
 }
 
 HostIP::~HostIP()
@@ -100,4 +102,29 @@ void HostIP::setCheck(int value)
 void HostIP::removeHost()
 {
     emit emitHost(this);
+}
+
+void HostIP::loadStyleSheet(QString styleFileName)
+{
+    QFile* styleSheet = new QFile(styleFileName);
+    QString style;
+
+    if (!styleSheet->exists())
+    {
+        styleSheet = new QFile(":/Images/stylesheet.css");
+
+        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            style = QString(styleSheet->readAll());
+        }
+    }
+    else
+    {
+        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            style = QString(styleSheet->readAll());
+        }
+    }
+
+    this->setStyleSheet(style);
 }
