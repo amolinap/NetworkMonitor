@@ -13,7 +13,7 @@
 #include "HostIP.h"
 
 #define APP_NAME "Network Monitor"
-#define APP_VERSION "1.2"
+#define APP_VERSION "1.4"
 #define APP_BUILT_ON "JULIO 2018"
 
 namespace Ui {
@@ -42,6 +42,7 @@ protected slots:
     void openHosts();
     void saveLOG(QString message);
     void removeHost(HostIP* host);
+    void loadStyleSheet(QString styleFileName);
 };
 
 #endif // MONITOR_H

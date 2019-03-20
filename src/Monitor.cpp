@@ -16,7 +16,7 @@ Monitor::Monitor(QWidget *parent) :
     connect(ui->btAdd, SIGNAL(clicked()), this, SLOT(addHost()));
     connect(ui->btClose, SIGNAL(clicked()), this, SLOT(close()));
 
-    setWindowTitle(tr("%1 %2").arg(APP_NAME).arg(APP_VERSION));
+    setWindowTitle(tr("%1 %2 Qt v%3").arg(APP_NAME).arg(APP_VERSION).arg(QT_VERSION_STR));
 
     QDir directory;
 
@@ -27,6 +27,7 @@ Monitor::Monitor(QWidget *parent) :
 
     logName = "LOG_" + QDate::currentDate().toString("yyyyMMdd") + QTime::currentTime().toString("HHmmss") + ".txt";
 
+    loadStyleSheet(":/Images/stylesheet.css");
     openHosts();
 }
 
@@ -180,4 +181,29 @@ void Monitor::removeHost(HostIP* host)
         listLayout->update();
         qDebug()<<listLayout->count();
     }
+}
+
+void Monitor::loadStyleSheet(QString styleFileName)
+{
+    QFile* styleSheet = new QFile(styleFileName);
+    QString style;
+
+    if (!styleSheet->exists())
+    {
+        styleSheet = new QFile(":/Images/stylesheet.css");
+
+        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            style = QString(styleSheet->readAll());
+        }
+    }
+    else
+    {
+        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            style = QString(styleSheet->readAll());
+        }
+    }
+
+    qApp->setStyleSheet(style);
 }

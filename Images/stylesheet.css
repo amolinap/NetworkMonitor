@@ -1,6 +1,19 @@
-QWidget {
-        font-size: 10px;
-	font-weight: normal;
+QWidget
+{
+    font-family: Tahoma;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: normal;
+
+    background-color:#000000;
+    border: 0px solid #585858;
+    color: #01DF3A;
+}
+
+QScrollArea
+{
+    border: 2px solid #585858;
+    border-radius: 5px;
 }
 
 QWidget#HostIP 
@@ -10,46 +23,57 @@ QWidget#HostIP
 
 QLabel
 {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 QLabel#lbLastRequest,#lbLastError
 {
-	color: #FFFFFF;
-	font-size: 10px;
-	font-weight: normal;
+    /*color: #FFFFFF;
+    font-size: 10px;
+    font-weight: normal;*/
+
+    background-color:#000000;
+    border: 2px solid #61380B;
+    border-radius: 5px;
+    color: #01DF3A;
+    font-size: 10px;
+    font-weight: normal;
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 10px;
+    max-height: 10px;
 }
 
 QLabel#lbStatus
 {
-	color: #000000;
-	font-size: 10px;
-	font-weight: normal;
+    color: #000000;
+    font-size: 10px;
+    font-weight: normal;
 }
 
 QWidget#gbHost 
 {
-     border: 2px solid #000000;
-	border-radius: 1px;
+    border: 2px solid #000000;
+    border-radius: 1px;
     background-color: #0B3861;
 }
 
 QCheckBox 
 {
-	border: 0px;
-	color: #000000;
-	margin-top: 5px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
+    border: 0px;
+    color: #000000;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 QCheckBox::indicator 
 {
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
     border: 2px solid #FFFF00;
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
 QCheckBox::indicator:checked 
@@ -65,4 +89,46 @@ QCheckBox::indicator:checked:hover
 QCheckBox::indicator:checked:pressed 
 {
     background-color: #FFBF00;
+}
+
+QPushButton
+{
+    background-color:#0B3861;
+    border: 2px solid #BDBDBD;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: normal;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 15px;
+    max-height: 15px;
+}
+
+QPushButton#btIP,#btName
+{
+    background-color:#585858;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 15px;
+    max-height: 15px;
+}
+
+QPushButton:disabled#btIP,:disabled#btName
+{
+    background-color:#000000;
+    border: 2px solid #61380B;
+    border-radius: 5px;
+    color: #01DF3A;
+    font-size: 12px;
+    font-weight: normal;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 20px;
+    max-height: 20px;
 }

@@ -15,8 +15,8 @@ HostIP::HostIP(QWidget *parent) :
     ping = new Ping();
     connect(ping, SIGNAL(emitStatus(bool,QString)), this, SLOT(pingIsOk(bool,QString)));
     connect(ui->btRemove, SIGNAL(clicked()), this, SLOT(removeHost()));
-
-    loadStyleSheet(":/Images/stylesheet.css");
+    connect(ui->btIP, SIGNAL(clicked()), this, SLOT(captureHost()));
+    connect(ui->btName, SIGNAL(clicked()), this, SLOT(captureName()));
 }
 
 HostIP::~HostIP()
@@ -28,16 +28,16 @@ void HostIP::enabledHost(bool enabled)
 {
     if(enabled)
     {
-        ui->tbIP->setEnabled(false);
-        ui->tbName->setEnabled(false);
+        ui->btIP->setEnabled(false);
+        ui->btName->setEnabled(false);
 
-        ping->setIP(ui->tbIP->text());
+        ping->setIP(ui->btIP->text());
         ping->start();
     }
     else
     {
-        ui->tbIP->setEnabled(true);
-        ui->tbName->setEnabled(true);
+        ui->btIP->setEnabled(true);
+        ui->btName->setEnabled(true);
 
         ping->terminate();
     }
@@ -53,7 +53,7 @@ void HostIP::pingIsOk(bool value, QString ip)
         ui->lbStatus->setText("Activo");
         ui->lbStatus->setStyleSheet("background-color:#40FF00;border-radius: 12px;");
 
-        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->tbName->text() + "] \t Ping Ok!!!");
+        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->btName->text() + "] \t Ping Ok!!!");
     }
     else
     {
@@ -61,18 +61,18 @@ void HostIP::pingIsOk(bool value, QString ip)
         ui->lbStatus->setText("No Activo");
         ui->lbStatus->setStyleSheet("background-color:#FF0000;border-radius: 12px;");
 
-        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->tbName->text() + "] \t Ping Error!!!");
+        emit emitLOGMessage(time + " \t " + ip + " \t [" + ui->btName->text() + "] \t Ping Error!!!");
     }
 }
 
 QString HostIP::getIP()
 {
-    return ui->tbIP->text();
+    return ui->btIP->text();
 }
 
 QString HostIP::getName()
 {
-    return ui->tbName->text();
+    return ui->btName->text();
 }
 
 int HostIP::getCheck()
@@ -82,12 +82,12 @@ int HostIP::getCheck()
 
 void HostIP::setIP(QString ip)
 {
-    ui->tbIP->setText(ip);
+    ui->btIP->setText(ip);
 }
 
 void HostIP::setName(QString name)
 {
-    ui->tbName->setText(name);
+    ui->btName->setText(name);
 }
 
 void HostIP::setCheck(int value)
@@ -104,27 +104,26 @@ void HostIP::removeHost()
     emit emitHost(this);
 }
 
-void HostIP::loadStyleSheet(QString styleFileName)
+void HostIP::captureHost()
 {
-    QFile* styleSheet = new QFile(styleFileName);
-    QString style;
+    bool ok;
 
-    if (!styleSheet->exists())
+    QString text = QInputDialog::getText(0, "Ingresar Información", "IP:", QLineEdit::Normal, ui->btIP->text(), &ok);
+
+    if (ok && !text.isEmpty())
     {
-        styleSheet = new QFile(":/Images/stylesheet.css");
-
-        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            style = QString(styleSheet->readAll());
-        }
+        ui->btIP->setText(text);
     }
-    else
+}
+
+void HostIP::captureName()
+{
+    bool ok;
+
+    QString text = QInputDialog::getText(0, "Ingresar Información", "Nombre:", QLineEdit::Normal, ui->btName->text(), &ok);
+
+    if (ok && !text.isEmpty())
     {
-        if(styleSheet->open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            style = QString(styleSheet->readAll());
-        }
+        ui->btName->setText(text);
     }
-
-    this->setStyleSheet(style);
 }

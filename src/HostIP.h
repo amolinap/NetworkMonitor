@@ -11,6 +11,7 @@
 #include <QProcess>
 #include <QDateTime>
 #include <QFile>
+#include <QInputDialog>
 
 #include "Ping.h"
 
@@ -40,8 +41,7 @@ public:
     int getCheck();
     void setIP(QString ip);
     void setName(QString name);
-    void setCheck(int value);
-    void loadStyleSheet(QString styleFileName);
+    void setCheck(int value); 
 
 private:
     Ui::HostIP *ui;
@@ -51,6 +51,8 @@ protected slots:
     void enabledHost(bool enabled);
     void pingIsOk(bool value, QString ip);
     void removeHost();
+    void captureHost();
+    void captureName();
 
 signals:
     void emitLOGMessage(QString message);
