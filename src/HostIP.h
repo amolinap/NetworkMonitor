@@ -12,6 +12,8 @@
 #include <QDateTime>
 #include <QFile>
 #include <QInputDialog>
+#include <QHostAddress>
+#include <QMessageBox>
 
 #include "Ping.h"
 

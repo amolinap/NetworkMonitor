@@ -112,7 +112,16 @@ void HostIP::captureHost()
 
     if (ok && !text.isEmpty())
     {
-        ui->btIP->setText(text);
+        QHostAddress address(text);
+
+        if (QAbstractSocket::IPv4Protocol == address.protocol())
+        {
+           ui->btIP->setText(text);
+        }
+        else
+        {
+            QMessageBox::information(this, "Informacion", "Direccion IP incorrecta!!!", QMessageBox::Ok);
+        }
     }
 }
 
