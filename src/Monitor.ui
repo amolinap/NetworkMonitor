@@ -6,18 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>340</height>
+    <width>728</width>
+    <height>448</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Network Monitor</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#lwHosts 
-{
-    background-color: #000000;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -30,8 +27,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>574</width>
-        <height>272</height>
+        <width>702</width>
+        <height>380</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -64,7 +61,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="lbInfo">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -72,10 +69,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: #40FF00;
-font-size: 12px;
-font-weight: normal;
-background-color: #000000;</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>[***Se realiza un ping cada 10 segundos***]</string>

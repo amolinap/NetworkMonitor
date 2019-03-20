@@ -16,7 +16,7 @@ Monitor::Monitor(QWidget *parent) :
     connect(ui->btAdd, SIGNAL(clicked()), this, SLOT(addHost()));
     connect(ui->btClose, SIGNAL(clicked()), this, SLOT(close()));
 
-    setWindowTitle(tr("%1 %2 Qt v%3").arg(APP_NAME).arg(APP_VERSION).arg(QT_VERSION_STR));
+    setWindowTitle(tr("%1 %2 | Qt v%3").arg(APP_NAME).arg(APP_VERSION).arg(QT_VERSION_STR));
 
     QDir directory;
 

@@ -5,13 +5,19 @@ QWidget
     font-size: 10px;
     font-weight: normal;
 
-    background-color:#000000;
+    background-color: transparent;
     border: 0px solid #585858;
     color: #01DF3A;
 }
 
+QWidget#Monitor
+{
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #0A1B2A, stop: 1 #0B3861);
+}
+
 QScrollArea
 {
+    background-color: transparent;
     border: 2px solid #585858;
     border-radius: 5px;
 }
@@ -23,30 +29,43 @@ QWidget#HostIP
 
 QLabel
 {
+    font-family: Tahoma;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+QLineEdit
+{
+    font-family: Tahoma;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: normal;
     color: #FFFFFF;
 }
 
 QLabel#lbLastRequest,#lbLastError
 {
-    /*color: #FFFFFF;
-    font-size: 10px;
-    font-weight: normal;*/
-
-    background-color:#000000;
-    border: 2px solid #61380B;
+    background-color:transparent;
+    border: 1px solid #6E6E6E;
     border-radius: 5px;
-    color: #01DF3A;
+    color: #FFFFFF;
     font-size: 10px;
     font-weight: normal;
     min-width: 120px;
     max-width: 120px;
-    min-height: 10px;
-    max-height: 10px;
+    min-height: 15px;
+    max-height: 15px;
 }
 
 QLabel#lbStatus
 {
     color: #000000;
+}
+
+QLabel#lbInfo
+{
     font-size: 10px;
     font-weight: normal;
 }
@@ -55,7 +74,9 @@ QWidget#gbHost
 {
     border: 2px solid #000000;
     border-radius: 1px;
-    background-color: #0B3861;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #0B3861, stop: 1 #000000);
+    min-height: 40px;
+    max-height: 40px;
 }
 
 QCheckBox 
@@ -72,18 +93,18 @@ QCheckBox::indicator
 {
     width: 20px;
     height: 20px;
-    border: 2px solid #FFFF00;
+    border: 2px solid #0B3861;
     border-radius: 5px;
 }
 
 QCheckBox::indicator:checked 
 {
-    background-color: #FFBF00;
+    background-color: #58ACFA;
 }
 
 QCheckBox::indicator:checked:hover 
 {
-    background-color: #FFBF00;
+    background-color: #0B3861;
 }
 
 QCheckBox::indicator:checked:pressed 
@@ -94,7 +115,7 @@ QCheckBox::indicator:checked:pressed
 QPushButton
 {
     background-color:#0B3861;
-    border: 2px solid #BDBDBD;
+    border: 1px solid #BDBDBD;
     border-radius: 5px;
     color: #FFFFFF;
     font-size: 10px;
@@ -108,27 +129,65 @@ QPushButton
 QPushButton#btIP,#btName
 {
     background-color:#585858;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    min-width: 150px;
+    max-width: 150px;
+    min-height: 15px;
+    max-height: 15px;
+}
+
+QPushButton#btRemove
+{
+    min-width: 50px;
+    max-width: 50px;
+}
+
+QPushButton:disabled#btIP,:disabled#btName
+{
+    background-color:transparent;
+    border: 1px solid #6E6E6E;
     border-radius: 5px;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: normal;
     min-width: 100px;
     max-width: 100px;
-    min-height: 15px;
-    max-height: 15px;
-}
-
-QPushButton:disabled#btIP,:disabled#btName
-{
-    background-color:#000000;
-    border: 2px solid #61380B;
-    border-radius: 5px;
-    color: #01DF3A;
-    font-size: 12px;
-    font-weight: normal;
-    min-width: 100px;
-    max-width: 100px;
     min-height: 20px;
     max-height: 20px;
+}
+
+QScrollBar:vertical
+{
+    border-color: #0174DF;
+    border-width: 0px;
+    border-style: solid;
+    background-color: transparent;
+    width: 15px;
+}
+
+QScrollBar::handle:vertical
+{
+    border: 1px solid #0B3861;
+    border-radius: 5px;
+    background-color: #58ACFA;
+}
+
+QScrollBar:horizontal
+{
+    border-color: #0174DF;
+    border-width: 0px;
+    border-style: solid;
+    background-color: transparent;
+    height: 15px;
+}
+
+QScrollBar::handle:horizontal
+{
+    border: 1px solid #0B3861;
+    border-radius: 5px;
+    background-color: #58ACFA;
 }
