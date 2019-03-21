@@ -18,7 +18,7 @@ QWidget#Monitor
 QScrollArea
 {
     background-color: transparent;
-    border: 2px solid #585858;
+    border: 1px solid #585858;
     border-radius: 5px;
 }
 
@@ -75,8 +75,8 @@ QWidget#gbHost
     border: 2px solid #000000;
     border-radius: 1px;
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #0B3861, stop: 1 #000000);
-    min-height: 40px;
-    max-height: 40px;
+    min-height: 45px;
+    max-height: 45px;
 }
 
 QCheckBox 
@@ -154,10 +154,10 @@ QPushButton:disabled#btIP,:disabled#btName
     color: #FFFFFF;
     font-size: 12px;
     font-weight: normal;
-    min-width: 100px;
-    max-width: 100px;
-    min-height: 20px;
-    max-height: 20px;
+    min-width: 150px;
+    max-width: 150px;
+    min-height: 15px;
+    max-height: 15px;
 }
 
 QScrollBar:vertical
